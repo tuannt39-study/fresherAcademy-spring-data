@@ -11,7 +11,7 @@
     <properties>
         <java-version>1.8</java-version>
         <spring-version>4.3.14.RELEASE</spring-version>
-        <mysql-version>5.1.45</mysql-version>
+        <oracle-version>12.2.0.1</oracle-version>
     </properties>
 
     <dependencies>
@@ -21,9 +21,9 @@
             <version>${spring-version}</version>
         </dependency>
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql-version}</version>
+            <groupId>com.oracle.jdbc</groupId>
+            <artifactId>ojdbc8</artifactId>
+            <version>${oracle-version}</version>
         </dependency>
     </dependencies>
 

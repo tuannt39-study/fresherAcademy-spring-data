@@ -9,16 +9,16 @@ import java.util.List;
 
 @Component("StudentJdbcDao")
 public class StudentJdbcDao {
-    private static String jdbcUrl = "jdbc:mysql://localhost:3306/education?useUnicode=true&characterEncoding=utf8&useSSL=false";
+    private static String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:XE";
     private Connection connection = null;
     private Statement statement = null;
 
     private void createConnection() {
         if (connection == null) {
             try {
-                Class.forName("com.mysql.jdbc.Driver").newInstance();
+                Class.forName("oracle.jdbc.driver.OracleDriver").newInstance();
                 //Get a connection
-                connection = DriverManager.getConnection(jdbcUrl, "root", "12345");
+                connection = DriverManager.getConnection(jdbcUrl, "ITSOl", "12345");
             } catch (Exception except) {
                 System.out.println("Connection Failed! Check output console");
                 except.printStackTrace();
