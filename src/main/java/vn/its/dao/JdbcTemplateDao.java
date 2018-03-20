@@ -58,6 +58,12 @@ public class JdbcTemplateDao {
         jdbcTemplate.execute(sql);
     }
 
+    public void deleteStudent() {
+        jdbcTemplate.setDataSource(getDataSource());
+        String sql = "DELETE FROM STUDENT";
+        jdbcTemplate.execute(sql);
+    }
+
     public List<Student> getAllStudent() {
         createConnection();
         List<Student> students = new ArrayList<>();
