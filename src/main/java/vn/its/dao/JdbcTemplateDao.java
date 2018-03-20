@@ -64,6 +64,18 @@ public class JdbcTemplateDao {
         jdbcTemplate.execute(sql);
     }
 
+    public int countStudents() {
+        jdbcTemplate.setDataSource(getDataSource());
+        String sql = "SELECT COUNT (*) FROM STUDENT";
+        return jdbcTemplate.queryForObject(sql, Integer.class);
+    }
+
+    public String nameStudents() {
+        jdbcTemplate.setDataSource(getDataSource());
+        String sql = "SELECT NAME FROM STUDENT";
+        return jdbcTemplate.queryForObject(sql, String.class);
+    }
+
     public List<Student> getAllStudent() {
         createConnection();
         List<Student> students = new ArrayList<>();
