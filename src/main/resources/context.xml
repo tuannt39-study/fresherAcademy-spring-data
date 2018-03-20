@@ -6,4 +6,9 @@
 
     <context:component-scan base-package="vn.its.dao" />
 
+    <bean name="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+        <property name="url" value="jdbc:oracle:thin:@localhost:1521:XE" />
+    </bean>
+
 </beans>
