@@ -15,16 +15,17 @@ public class JdbcTemplateDao {
     private Connection connection = null;
     private Statement statement = null;
 
-    @Autowired
     private DataSource dataSource;
-    private JdbcTemplate jdbcTemplate = new JdbcTemplate();
+    private JdbcTemplate jdbcTemplate;
 
     public DataSource getDataSource() {
         return dataSource;
     }
 
+    @Autowired
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
+        jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
     private void createConnection() {
@@ -53,25 +54,21 @@ public class JdbcTemplateDao {
     }
 
     public void insertStudent(Student student) {
-        jdbcTemplate.setDataSource(getDataSource());
         String sql = "insert into student values (" + student.getId() + ",'" + student.getName() + "','" + student.getLocation() + "')";
         jdbcTemplate.execute(sql);
     }
 
     public void deleteStudent() {
-        jdbcTemplate.setDataSource(getDataSource());
         String sql = "DELETE FROM STUDENT";
         jdbcTemplate.execute(sql);
     }
 
     public int countStudents() {
-        jdbcTemplate.setDataSource(getDataSource());
         String sql = "SELECT COUNT (*) FROM STUDENT";
         return jdbcTemplate.queryForObject(sql, Integer.class);
     }
 
     public String nameStudents() {
-        jdbcTemplate.setDataSource(getDataSource());
         String sql = "SELECT NAME FROM STUDENT";
         return jdbcTemplate.queryForObject(sql, String.class);
     }
