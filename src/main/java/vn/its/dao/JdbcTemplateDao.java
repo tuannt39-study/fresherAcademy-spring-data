@@ -13,9 +13,6 @@ import java.util.List;
 
 @Component("jdbcTemplateDao")
 public class JdbcTemplateDao {
-    private Connection connection = null;
-    private Statement statement = null;
-
     private DataSource dataSource;
     private JdbcTemplate jdbcTemplate;
 
@@ -27,31 +24,6 @@ public class JdbcTemplateDao {
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
         jdbcTemplate = new JdbcTemplate(dataSource);
-    }
-
-    private void createConnection() {
-        if (connection == null) {
-            try {
-                connection = dataSource.getConnection("ITSOL", "12345");
-            } catch (Exception except) {
-                System.out.println("Connection Failed! Check output console");
-                except.printStackTrace();
-            }
-        }
-    }
-
-    private void shutdown() {
-        try {
-            if (statement != null) {
-                statement.close();
-            }
-            if (connection != null) {
-                connection.close();
-            }
-        } catch (SQLException sqlExcept) {
-
-        }
-
     }
 
     public void insertStudent(Student student) {
