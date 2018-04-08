@@ -75,24 +75,8 @@ public class JdbcTemplateDao {
     }
 
     public List<Student> getAllStudent() {
-        createConnection();
-        List<Student> students = new ArrayList<>();
-        try {
-            statement = connection.createStatement();
-            ResultSet results = statement.executeQuery("select * from student");
-            ResultSetMetaData rsmd = results.getMetaData();
-            while (results.next()) {
-                int id = results.getInt(1);
-                String name = results.getString(2);
-                String location = results.getString(3);
-                students.add(new Student(id, name, location));
-            }
-            results.close();
-            statement.close();
-        } catch (SQLException sqlExcept) {
-            sqlExcept.printStackTrace();
-        }
-        return students;
+        String sql = "select * from student";
+        return jdbcTemplate.query(sql, new StudentMapper());
     }
 
     public Student getStudentById(int id){

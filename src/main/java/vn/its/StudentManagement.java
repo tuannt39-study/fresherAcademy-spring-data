@@ -13,5 +13,6 @@ public class StudentManagement {
 //        dao.deleteStudent();
         System.out.println(dao.countStudents());
         System.out.println(dao.nameStudents());
+        System.out.println(dao.getAllStudent());
     }
 }
