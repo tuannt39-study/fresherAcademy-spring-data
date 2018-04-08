@@ -2,6 +2,7 @@ package vn.its.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 import vn.its.model.Student;
 
@@ -92,6 +93,18 @@ public class JdbcTemplateDao {
             sqlExcept.printStackTrace();
         }
         return students;
+    }
+
+    public Student getStudentById(int id){
+        Student student = null;
+        String sql = "SELECT * FROM STUDENT  WHERE ID = ?";
+        return jdbcTemplate.queryForObject(sql, new Object[] {id}, new StudentMapper());
+    }
+
+    private static final class StudentMapper implements RowMapper<Student>{
+        public Student mapRow(ResultSet resultSet, int arg1) throws SQLException{
+            return new Student(resultSet.getInt("id"), resultSet.getString("name"), resultSet.getString("location"));
+        }
     }
 
 }
