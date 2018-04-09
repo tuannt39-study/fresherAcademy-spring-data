@@ -20,5 +20,7 @@ public class StudentService {
         System.out.println(studentRepository.findByNameAndLocation("Tuan1", "Ha Noi1"));
         System.out.println(studentRepository.findByNameOrLocation("Nguyen Tuan", "Ha Noi2"));
         System.out.println(studentRepository.findFirstByOrderByNameAsc());
+
+        System.out.println(studentRepository.getAllByNameAbc("Tuan1"));
     }
 }
