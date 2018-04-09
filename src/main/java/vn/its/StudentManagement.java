@@ -12,7 +12,9 @@ public class StudentManagement {
 //        dao.save(new Student(1, "Tuan", "Ha Noi"));
 
         StudentService studentService = context.getBean("studentService", StudentService.class);
-        studentService.save(new Student(1, "Tuan1", "Ha Noi1"));
+        studentService.save(new Student(1, "Nguyen Tuan", "Ha Noi"));
+        studentService.save(new Student(2, "Tuan1", "Ha Noi1"));
+        studentService.test();
 
     }
 }

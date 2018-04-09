@@ -14,4 +14,11 @@ public class StudentService {
         studentRepository.save(student);
     }
 
+    public void test(){
+        System.out.println(studentRepository.count());
+        System.out.println(studentRepository.findAll());
+        System.out.println(studentRepository.findByNameAndLocation("Tuan1", "Ha Noi1"));
+        System.out.println(studentRepository.findByNameOrLocation("Nguyen Tuan", "Ha Noi2"));
+        System.out.println(studentRepository.findFirstByOrderByNameAsc());
+    }
 }
