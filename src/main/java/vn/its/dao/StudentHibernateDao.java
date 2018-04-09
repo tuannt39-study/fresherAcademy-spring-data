@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import vn.its.model.Student;
 
-@Component("StudentHibernateDao")
+@Component
 public class StudentHibernateDao {
     @Autowired
     private SessionFactory sessionFactory;
